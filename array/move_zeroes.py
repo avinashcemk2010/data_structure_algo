@@ -1,4 +1,7 @@
 def move_zeroes(ls: list):
+
+    # j will focus on zero element
+    # i will focus on non zero element
     
     j = 0
     for i in range(len(ls)):
