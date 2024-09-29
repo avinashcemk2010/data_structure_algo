@@ -41,11 +41,70 @@ class LinkedList:
 
         self.print_ll()
 
+    def add_in_sorted_ll(self, data):
+        current = self.head
+        previous = None
+        node = Node(data)
+
+        if current.data > data:
+            self.head = node
+            node.next = current
+        else:
+            while current and current.data < data:
+                previous = current
+                current = current.next
+
+            previous.next = node
+            node.next = current
+
+        self.print_ll()
+
+    def delete(self, key):
+        current = self.head
+        previous = None
+
+        if current.data == key:
+            self.head = current.next
+        else:
+            while current and current.data != key:
+                previous = current
+                current = current.next
+
+            if current:
+                previous.next = current.next
+
+        ll.print_ll()
+
+    
+    def detect_loop_ll(self):
+        fast_ptr = self.head
+        slow_ptr = self.head
+
+        while fast_ptr and fast_ptr.next:
+            fast_ptr = fast_ptr.next.next
+            slow_ptr = slow_ptr.next
+
+            if slow_ptr == fast_ptr:
+                return True
+
+        return False
+
 
 ll = LinkedList()
 # Insert element in link list
-ls = [1,1,3,4,4,4,5,6,7,7,7]
+ls = [3,4,4,4,5,6,7,7,7,15]
 for ele in ls:
     ll.append(ele)
 
 ll.remove_duplicate()
+
+#add element in sorted link list
+ll.add_in_sorted_ll(5)
+ll.add_in_sorted_ll(12)
+ll.add_in_sorted_ll(1)
+
+#delete
+ll.delete(5)
+ll.delete(1)
+
+print(f'Its a loop?{ll.detect_loop_ll()}')
