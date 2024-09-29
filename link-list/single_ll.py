@@ -92,9 +92,18 @@ class LinkedList:
 
     
     def reverse(self):
-        pass 
+        previous = None
+        current = self.head
+        next = None
+        while current:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
 
-            
+        self.head = previous
+
+        self.print_ll()
 
 
 ll= LinkedList()
