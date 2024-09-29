@@ -105,6 +105,23 @@ class LinkedList:
 
         self.print_ll()
 
+    
+    def nth_element(self, n):
+        main_ptr = self.head
+        ref_ptr = self.head
+        count = 0
+
+        while(count < n):
+            ref_ptr = ref_ptr.next
+            count += 1
+
+        while ref_ptr:
+            ref_ptr = ref_ptr.next
+            main_ptr = main_ptr.next
+
+        print(f'value at pos:{n} is {main_ptr.data}')
+
+
 
 ll= LinkedList()
 
@@ -146,6 +163,11 @@ print(f'{ele} is present at {pos} location')
 
 # reverse the link list
 ll.reverse()
+
+ll.nth_element(10)
+ll.nth_element(1)
+ll.nth_element(2)
+
 
 
 
