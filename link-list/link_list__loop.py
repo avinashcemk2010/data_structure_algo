@@ -24,25 +24,37 @@ class LinkedList:
         n6.next = n3
         self.head = n1
 
-    def detect_loop_ll(self):
+    # floyd cycle detection algorithm
+    def detect_loop_ll(self, get_starting_node = False):
         fast_ptr = self.head
         slow_ptr = self.head
-
-        print(fast_ptr.data, slow_ptr.data)
 
         while fast_ptr and fast_ptr.next:
             fast_ptr = fast_ptr.next.next
             slow_ptr = slow_ptr.next
 
             if slow_ptr == fast_ptr:
+                if get_starting_node == True:
+                    return self.get_starting_node(slow_ptr)
+
                 return True
 
         return False
 
+    def get_starting_node(self, slow_ptr):
+        temp = self.head
+        while(temp != slow_ptr):
+            temp = temp.next
+            slow_ptr = slow_ptr.next
+
+        return temp.data
+
 
 ll = LinkedList()
 ll.append() 
-print(f'Its a loop?{ll.detect_loop_ll()}')
+print(f'Its a loop? {ll.detect_loop_ll()}')
+
+print(f'Starting node of loop? {ll.detect_loop_ll(get_starting_node=True)}')
 
 
     
