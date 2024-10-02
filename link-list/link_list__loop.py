@@ -1,0 +1,48 @@
+class Node:
+
+    def __init__(self, data) -> None:
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self) -> None:
+        self.head = None
+
+    def append(self):
+        n1 = Node(1)
+        n2 = Node(2)
+        n3 = Node(3)
+        n4 = Node(4)
+        n5 = Node(5)
+        n6 = Node(6)
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        n4.next = n5
+        n5.next = n6
+        n6.next = n3
+        self.head = n1
+
+    def detect_loop_ll(self):
+        fast_ptr = self.head
+        slow_ptr = self.head
+
+        print(fast_ptr.data, slow_ptr.data)
+
+        while fast_ptr and fast_ptr.next:
+            fast_ptr = fast_ptr.next.next
+            slow_ptr = slow_ptr.next
+
+            if slow_ptr == fast_ptr:
+                return True
+
+        return False
+
+
+ll = LinkedList()
+ll.append() 
+print(f'Its a loop?{ll.detect_loop_ll()}')
+
+
+    
