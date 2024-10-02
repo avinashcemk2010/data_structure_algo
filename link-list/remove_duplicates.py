@@ -75,20 +75,6 @@ class LinkedList:
 
         ll.print_ll()
 
-    
-    def detect_loop_ll(self):
-        fast_ptr = self.head
-        slow_ptr = self.head
-
-        while fast_ptr and fast_ptr.next:
-            fast_ptr = fast_ptr.next.next
-            slow_ptr = slow_ptr.next
-
-            if slow_ptr == fast_ptr:
-                return True
-
-        return False
-
 
 ll = LinkedList()
 # Insert element in link list
@@ -107,4 +93,4 @@ ll.add_in_sorted_ll(1)
 ll.delete(5)
 ll.delete(1)
 
-print(f'Its a loop?{ll.detect_loop_ll()}')
+
