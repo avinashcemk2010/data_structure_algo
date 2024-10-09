@@ -1,15 +1,15 @@
 from binary_tree import *
 from collections import deque
 
-def pre_order(root):
+def in_order(root):
     if root == None:
         return
 
-    pre_order(root.left)
+    in_order(root.left)
     print(root.data, end="-->")
-    pre_order(root.right) 
+    in_order(root.right) 
 
-def pre_order_loop(root):
+def in_order_loop(root):
     if root == None:
         return
 
@@ -26,7 +26,7 @@ def pre_order_loop(root):
             temp = temp.right
 
 createTree()
-pre_order(TreeNode.root)
+in_order(TreeNode.root)
 print()
 
-pre_order_loop(TreeNode.root)
+in_order_loop(TreeNode.root)
